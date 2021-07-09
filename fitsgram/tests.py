@@ -20,7 +20,16 @@ class ImageTestClass(TestCase):
         self.image.save_image()
         images = Image.objects.all()
         self.assertTrue(len(images) > 0)
-        
+
+    def test_update_caption(self):
+        self.image.save_image()
+        self.image = Image.objects.get(pk = 1)
+        self.image.update_caption('updated caption')
+        self.updated_image = Image.objects.get(id = 1)
+        self.assertEqual(self.updated_image.image_caption,"updated caption")
+
+    
+    #Testing Update Method
     def test_update_caption(self):
         self.image.save_image()
         self.image = Image.objects.get(pk = 1)
