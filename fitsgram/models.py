@@ -53,3 +53,9 @@ class Image(models.Model):
         self.image_caption = caption
         self.save()
 
+class Comment(models.Model):
+    comment = models.CharField(max_length = 1000)
+    image = models.IntegerField()
+    user = models.ForeignKey(User,on_delete=models.CASCADE)
+
+
