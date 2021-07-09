@@ -97,3 +97,20 @@ def search_user(request):
         searched_user = Profile.search(username)
 
         return redirect('profile',username = searched_user)
+
+def edit_profile(request,username):
+    current_user = request.user
+    if request.method == 'POST':
+        form = ProfileForm(request.POST,request.FILES)
+        if form.is_valid():
+            bio = form.save(commit=False)
+            bio.user = current_user
+            bio.save()
+        return redirect('index')
+    elif Profile.objects.get(user=current_user):
+        profile = Profile.objects.get(user=current_user)
+        form = ProfileForm(instance=profile)
+    else:
+        form = ProfileForm()
+
+    return render(request,'edit_profile.html',{"form":form})
