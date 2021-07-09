@@ -75,3 +75,18 @@ def ajax_comment(request):
     }
 
     return JsonResponse(data)
+
+def search(request):
+    if request.is_ajax():
+        q = request.GET.get('term', '')
+        users = User.objects.filter(username__icontains=q)
+        results = []
+        for user in users:
+            user_json = {}
+            user_json = user.username
+            results.append(user_json)
+            data = json.dumps(results)
+    else:
+        data = 'fail'
+    mimetype = 'application/json'
+    return HttpResponse(data, mimetype)
