@@ -37,3 +37,18 @@ class ImageTestClass(TestCase):
         self.updated_image = Image.objects.get(id = 1)
         self.assertEqual(self.updated_image.image_caption,"updated caption")
 
+    #Testing Delete Method
+    def test_delete_image(self):
+        self.image.delete_image()
+        self.assertTrue(len(Image.objects.all()) == 0)
+    
+
+class ProfileTestClass(TestCase):
+    # Set up method
+    def setUp(self):
+        self.user = User.objects.create_user(username='testuser', password='12345')
+        self.profile = Profile(id=1,profile_photo='path/to/photo',user = self.user,bio='test bio')
+
+    #Testing instance
+    def test_instance(self):
+        self.assertTrue(isinstance(self.profile,Profile))
