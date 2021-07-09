@@ -90,3 +90,10 @@ def search(request):
         data = 'fail'
     mimetype = 'application/json'
     return HttpResponse(data, mimetype)
+
+def search_user(request):
+    if 'username' in request.GET and request.GET['username']:
+        username = request.GET.get('username')
+        searched_user = Profile.search(username)
+
+        return redirect('profile',username = searched_user)
