@@ -9,3 +9,6 @@ class Profile(models.Model):
     bio = models.TextField(max_length = 100,blank = True)
     user = models.ForeignKey(User,on_delete=models.CASCADE,null=True)
     followers = models.ManyToManyField(User,blank=True,related_name='followers')
+
+    def save_profile(self):
+        self.save()
