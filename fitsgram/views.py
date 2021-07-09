@@ -41,3 +41,20 @@ def profile(request,username):
     else:
         form = NewImageForm()
     return render(request,"profile.html",{"profile":profile, "images":images, "form":form,"following":following})
+
+
+def ajaxlikephoto(request):
+    img_id = None
+    current_user = request.user
+
+    if request.method == 'GET':
+        img_id = request.GET['image_id']
+
+    if not Image.objects.filter(id = img_id,likes = request.user ).exists():
+        image = Image.objects.get(id = img_id)
+        image.likes.add(current_user)
+        image.save()
+
+    image = Image.objects.get(id = img_id)
+    likes = image.likes.all().count()
+    return HttpResponse(likes)
