@@ -12,3 +12,8 @@ class Profile(models.Model):
 
     def save_profile(self):
         self.save()
+
+
+    def update_bio(self,bio):
+        self.bio = bio
+        self.save()
