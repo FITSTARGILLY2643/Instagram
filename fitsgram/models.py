@@ -42,3 +42,7 @@ class Image(models.Model):
     def get_images(cls):
         images = cls.objects.all().order_by('-pub_date')
         return images
+
+    def save_image(self):
+        self.save()
+
