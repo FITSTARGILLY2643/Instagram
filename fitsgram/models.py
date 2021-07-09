@@ -33,3 +33,12 @@ class Image(models.Model):
     profile = models.ForeignKey(Profile,on_delete=models.CASCADE)
     likes = models.ManyToManyField(User, blank=True,related_name='post_likes')
     pub_date = models.DateTimeField(auto_now_add=True,null=True)
+
+
+    def __str__(self):
+        return self.image_name
+
+    @classmethod
+    def get_images(cls):
+        images = cls.objects.all().order_by('-pub_date')
+        return images
