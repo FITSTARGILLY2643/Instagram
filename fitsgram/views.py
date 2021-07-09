@@ -58,3 +58,20 @@ def ajaxlikephoto(request):
     image = Image.objects.get(id = img_id)
     likes = image.likes.all().count()
     return HttpResponse(likes)
+
+def ajax_comment(request):
+    comment = request.GET.get('comment')
+    image = request.GET.get('image')
+    user = request.user
+
+    comment = Comment(comment = comment,image = image,user = user)
+    comment.save()
+
+    latest_comment = f"{Comment.objects.all().last().comment}"
+    latest_comment_user = f"{Comment.objects.all().last().user}"
+    data = {
+        'latest_comment': latest_comment,
+        'latest_comment_user': latest_comment_user
+    }
+
+    return JsonResponse(data)
