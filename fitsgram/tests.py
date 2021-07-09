@@ -59,3 +59,11 @@ class ProfileTestClass(TestCase):
         profiles = Profile.objects.all()
         self.assertTrue(len(profiles) > 0)
 
+    #Testing updtae method
+    def test_update_profile(self):
+        self.profile.save_profile()
+        self.profile = Profile.objects.get(pk = 1)
+        self.profile.update_bio('updated bio')
+        self.updated_profile = Profile.objects.get(pk = 1)
+        self.assertEqual(self.updated_profile.bio,"updated bio")
+
