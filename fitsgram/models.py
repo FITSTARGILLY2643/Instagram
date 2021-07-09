@@ -45,7 +45,11 @@ class Image(models.Model):
 
     def save_image(self):
         self.save()
-        
+
     def delete_image(self):
         self.delete()
+
+    def update_caption(self,caption):
+        self.image_caption = caption
+        self.save()
 
