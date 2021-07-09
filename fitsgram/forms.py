@@ -5,3 +5,11 @@ class NewImageForm(forms.ModelForm):
     class Meta:
         model = Image
         exclude = ['user','profile','likes','pub_date']
+
+class CommentForm(forms.ModelForm):
+    class Meta:
+        model = Comment
+        exclude = ['user','image']
+        widgets = {
+            'myfield': forms.TextInput(attrs={'class': 'myfieldclass'}),
+        }
