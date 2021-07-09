@@ -19,3 +19,8 @@ class Profile(models.Model):
 
     def delete_profile(self):
         self.delete()
+
+    @classmethod
+    def search(cls,username):
+        user = User.objects.get(username = username)
+        return user
