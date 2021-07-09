@@ -67,3 +67,9 @@ class ProfileTestClass(TestCase):
         self.updated_profile = Profile.objects.get(pk = 1)
         self.assertEqual(self.updated_profile.bio,"updated bio")
 
+    #Testing Delete Method
+    def test_delete_image(self):
+        self.profile.delete_profile()
+        self.assertTrue(len(Profile.objects.all()) == 0)
+
+
