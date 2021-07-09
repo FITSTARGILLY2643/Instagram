@@ -13,3 +13,8 @@ class CommentForm(forms.ModelForm):
         widgets = {
             'myfield': forms.TextInput(attrs={'class': 'myfieldclass'}),
         }
+
+class ProfileForm(forms.ModelForm):
+    class Meta:
+        model = Profile
+        exclude = ['user','followers']
