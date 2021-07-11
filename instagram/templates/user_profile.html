@@ -14,8 +14,8 @@
 {{ block.super }}
 <div class="container">
     <div style="display: flexbox; margin-left: auto;margin-right: auto; border-radius: 50%; position: relative;
-                    width: 200px;
-                    height: 200px;
+                    width: 150px;
+                    height: 150px;
                     overflow: hidden; float: left;">
 
         <img style="width: 100%; height: auto;" src="{{ user_prof.profile.photo.url }}">
@@ -39,8 +39,8 @@
             </div>
             <div class="post-details mt-3 mb-3">
                 <span class="mr-5"><strong>{{user_posts.count}}</strong> Posts</span>
-                <span class="mr-5"> <strong>{{ user_prof.profile.followers.count }}</strong> followers</span>
-                <span class="mr-5"> <strong>{{ user_prof.profile.following.count }}</strong> following</span>
+                <span class="mr-5"> <strong>{{ user_prof.profile.followers.count }}</strong> Followers</span>
+                <span class="mr-5"> <strong>{{ user_prof.profile.following.count }}</strong> Following</span>
             </div>
             <h5>{{ user_prof.profile.name }}</h5>
             <p class="text-secondary">{{ user_prof.profile.bio }}</p>
@@ -50,7 +50,7 @@
 <div class="container" style=" border-top: solid rgba(182, 176, 176, 0.74) 1px;">
     {% if user_posts %}
     {% for image in user_posts %}
-    <div class="card" style="width: 40rem; margin-top: 50px;">
+    <div class="card" style="width: 30rem; margin-top: 20px;">
         <div class="card-body">
             <img src="{{ image.image.url }}" alt="{{image.caption}}" class="card-img">
             <p class="card-text">{{ image.caption }}</p>
