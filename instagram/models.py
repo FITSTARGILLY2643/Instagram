@@ -5,9 +5,6 @@ from django.dispatch import receiver
 from django.core.exceptions import ObjectDoesNotExist
 
 
-# Create your models here.
-
-# likes = models.ManyToManyField(User, related_name='likes')
 class Image(models.Model):
     user = models.ForeignKey('Profile', on_delete=models.CASCADE, related_name='images')
     image = models.ImageField(upload_to = 'gallery/', null=True, blank=True)
@@ -17,7 +14,6 @@ class Image(models.Model):
     class Meta:
         ordering = ["-pk"]
 
-   
 
     @classmethod
     def images(cls):
